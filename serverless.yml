@@ -1,0 +1,19 @@
+service: multiple-runtime-app
+provider:
+  name: aws
+
+functions:
+  testpython:
+    runtime: python3.6
+    events:
+      - http:
+          method: get
+          path: greet
+    handler: web/handler.hello
+  testnode:
+    runtime: nodejs12.x
+    events:
+      - http:
+          method: get
+          path: time
+    handler: api/handler.timestamp
